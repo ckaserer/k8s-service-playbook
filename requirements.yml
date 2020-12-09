@@ -1,6 +1,6 @@
 ---
 roles:
-  - name: ckaserer.gitlab_runner
+  - name: ckaserer.haproxy
 
 collections: []
 ...
