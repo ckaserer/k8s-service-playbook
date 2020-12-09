@@ -191,6 +191,17 @@
   bind_zone_time_to_retry: "2H"
   bind_zone_time_to_expire: "2W"
   bind_zones:
+    - name: 'gp.local'
+      networks:
+        - '10.20.26'
+      primaries:
+        - '10.20.26.12'
+      hostmaster_email: "noreply@no.reply"
+      hosts:
+        - name: "gp-bastion"
+          ip: "10.20.26.11"
+        - name: "gp-service"
+          ip: "10.20.26.12"
     - name: 'ocp.gp.local'
       networks:
         - '10.20.24'
