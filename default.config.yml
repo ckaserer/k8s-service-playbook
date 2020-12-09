@@ -53,47 +53,43 @@
         - dontlog-normal
       balance: source
       server:
-        - name: worker-0
+        - name: oc-worker-http-0
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-1
+        - name: oc-worker-http-1
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-2
+        - name: oc-worker-http-2
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-3
+        - name: oc-worker-http-3
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-4
+        - name: oc-worker-http-4
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-4
+        - name: oc-worker-http-5
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-5
+        - name: oc-worker-http-6
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-6
+        - name: oc-worker-http-7
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-7
+        - name: oc-worker-http-8
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-8
-          listen: '10.20.26.12:80'
-          param:
-            - check
-        - name: worker-9
+        - name: oc-worker-http-9
           listen: '10.20.26.12:80'
           param:
             - check
@@ -104,47 +100,43 @@
         - dontlog-normal
       balance: source
       server:
-        - name: worker-0
+        - name: oc-worker-https-0
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-1
+        - name: oc-worker-https-1
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-2
+        - name: oc-worker-https-2
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-3
+        - name: oc-worker-https-3
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-4
+        - name: oc-worker-https-4
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-4
+        - name: oc-worker-https-5
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-5
+        - name: oc-worker-https-6
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-6
+        - name: oc-worker-https-7
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-7
+        - name: oc-worker-https-8
           listen: '10.20.26.12:80'
           param:
             - check
-        - name: worker-8
-          listen: '10.20.26.12:80'
-          param:
-            - check
-        - name: worker-9
+        - name: oc-worker-https-9
           listen: '10.20.26.12:80'
           param:
             - check
