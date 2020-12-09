@@ -1,0 +1,34 @@
+---
+# ckaserer.haproxy
+  haproxy_frontend:
+    - name: oc-api
+      bind:
+        - listen: ':6443'
+      mode: tcp
+      option:
+        - dontlog-normal
+      default_backend: oc-api-backend
+  haproxy_backend:
+    - name: oc-api-backend
+      mode: tcp
+      option:
+        - dontlog-normal
+      balance: source
+      server:
+        - name: bootstrap
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: master-0
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: master-1
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: master-2
+          listen: '10.20.26.12:80'
+          param:
+            - check
+...
