@@ -26,5 +26,5 @@ deploy:
     - python -V
     - pip -V
     - ansible --version
-    - ansible-playbook playbook.yml -i hosts.ini --extra-vars arch=arm
+    - ansible-playbook playbook.yml -i hosts.ini
 ...

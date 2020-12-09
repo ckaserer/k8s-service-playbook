@@ -172,64 +172,64 @@
             - check
 
 #bertvv.bind config
-bind_allow_query:
-  - any
-bind_listen_ipv4:
-  - any
-bind_listen_ipv6:
-  - any
-bind_forwarders:
-  - '8.8.8.8'
-  - '8.8.4.4'
-bind_recursion: true
-bind_query_log: 'data/query.log'
-bind_check_names: 'master ignore'
-bind_zone_master_server_ip: "10.20.26.12"
-bind_zone_minimum_ttl: "2D"
-bind_zone_ttl: "2W"
-bind_zone_time_to_refresh: "2D"
-bind_zone_time_to_retry: "2H"
-bind_zone_time_to_expire: "2W"
-bind_zones:
-  - name: 'ocp.gp.local'
-    networks:
-      - '10.20.24'
-    primaries:
-      - '10.20.26.12'
-    hostmaster_email: "noreply@no.reply"
-    hosts:
-      - name: "gp-service"
-        ip: "10.20.26.12"
-        aliases:
-          - "*.apps"
-          - api
-          - api-int
-      - name: "bootstrap"
-        ip: "10.20.24.9"
-      - name: "master0"
-        ip: "10.20.24.10"
-      - name: "master1"
-        ip: "10.20.24.11"
-      - name: "master2"
-        ip: "10.20.24.12"
-      - name: "worker0"
-        ip: "10.20.24.20"
-      - name: "worker1"
-        ip: "10.20.24.21"
-      - name: "worker2"
-        ip: "10.20.24.22" 
-      - name: "worker3"
-        ip: "10.20.24.23"
-      - name: "worker4"
-        ip: "10.20.24.24"
-      - name: "worker5"
-        ip: "10.20.24.25"
-      - name: "worker6"
-        ip: "10.20.24.26"
-      - name: "worker7"
-        ip: "10.20.24.27"
-      - name: "worker8"
-        ip: "10.20.24.28"
-      - name: "worker9"
-        ip: "10.20.24.29"
+  bind_allow_query:
+    - any
+  bind_listen_ipv4:
+    - any
+  bind_listen_ipv6:
+    - any
+  bind_forwarders:
+    - '8.8.8.8'
+    - '8.8.4.4'
+  bind_recursion: true
+  bind_query_log: 'data/query.log'
+  bind_check_names: 'master ignore'
+  bind_zone_master_server_ip: "10.20.26.12"
+  bind_zone_minimum_ttl: "2D"
+  bind_zone_ttl: "2W"
+  bind_zone_time_to_refresh: "2D"
+  bind_zone_time_to_retry: "2H"
+  bind_zone_time_to_expire: "2W"
+  bind_zones:
+    - name: 'ocp.gp.local'
+      networks:
+        - '10.20.24'
+      primaries:
+        - '10.20.26.12'
+      hostmaster_email: "noreply@no.reply"
+      hosts:
+        - name: "gp-service"
+          ip: "10.20.26.12"
+          aliases:
+            - "*.apps"
+            - api
+            - api-int
+        - name: "bootstrap"
+          ip: "10.20.24.9"
+        - name: "master0"
+          ip: "10.20.24.10"
+        - name: "master1"
+          ip: "10.20.24.11"
+        - name: "master2"
+          ip: "10.20.24.12"
+        - name: "worker0"
+          ip: "10.20.24.20"
+        - name: "worker1"
+          ip: "10.20.24.21"
+        - name: "worker2"
+          ip: "10.20.24.22" 
+        - name: "worker3"
+          ip: "10.20.24.23"
+        - name: "worker4"
+          ip: "10.20.24.24"
+        - name: "worker5"
+          ip: "10.20.24.25"
+        - name: "worker6"
+          ip: "10.20.24.26"
+        - name: "worker7"
+          ip: "10.20.24.27"
+        - name: "worker8"
+          ip: "10.20.24.28"
+        - name: "worker9"
+          ip: "10.20.24.29"
 ...
