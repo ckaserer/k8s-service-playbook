@@ -1,6 +1,13 @@
 ---
 # ckaserer.haproxy
   haproxy_frontend:
+    - name: oc-machineset
+      bind:
+        - listen: ':22623'
+      mode: tcp
+      option:
+        - dontlog-normal
+      default_backend: oc-machineset-backend 
     - name: oc-api
       bind:
         - listen: ':6443'
@@ -31,19 +38,42 @@
       balance: source
       server:
         - name: bootstrap
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.9:6443'
           param:
             - check
         - name: master-0
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.10:6443'
           param:
             - check
         - name: master-1
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.11:6443'
           param:
             - check
         - name: master-2
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.12:6443'
+          param:
+            - check
+
+    - name: oc-machineset-backend
+      mode: tcp
+      option:
+        - dontlog-normal
+      balance: source
+      server:
+        - name: bootstrap
+          listen: '10.20.24.9:22623'
+          param:
+            - check
+        - name: master-0
+          listen: '10.20.24.10:22623'
+          param:
+            - check
+        - name: master-1
+          listen: '10.20.24.11:22623'
+          param:
+            - check
+        - name: master-2
+          listen: '10.20.24.12:22623'
           param:
             - check
 
@@ -54,43 +84,43 @@
       balance: source
       server:
         - name: oc-worker-http-0
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.20:80'
           param:
             - check
         - name: oc-worker-http-1
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.21:80'
           param:
             - check
         - name: oc-worker-http-2
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.22:80'
           param:
             - check
         - name: oc-worker-http-3
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.23:80'
           param:
             - check
         - name: oc-worker-http-4
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.24:80'
           param:
             - check
         - name: oc-worker-http-5
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.25:80'
           param:
             - check
         - name: oc-worker-http-6
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.26:80'
           param:
             - check
         - name: oc-worker-http-7
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.27:80'
           param:
             - check
         - name: oc-worker-http-8
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.28:80'
           param:
             - check
         - name: oc-worker-http-9
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.29:80'
           param:
             - check
 
@@ -101,43 +131,43 @@
       balance: source
       server:
         - name: oc-worker-https-0
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.20:443'
           param:
             - check
         - name: oc-worker-https-1
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.21:443'
           param:
             - check
         - name: oc-worker-https-2
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.22:443'
           param:
             - check
         - name: oc-worker-https-3
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.23:443'
           param:
             - check
         - name: oc-worker-https-4
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.24:443'
           param:
             - check
         - name: oc-worker-https-5
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.25:443'
           param:
             - check
         - name: oc-worker-https-6
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.26:443'
           param:
             - check
         - name: oc-worker-https-7
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.27:443'
           param:
             - check
         - name: oc-worker-https-8
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.28:443'
           param:
             - check
         - name: oc-worker-https-9
-          listen: '10.20.26.12:80'
+          listen: '10.20.24.29:443'
           param:
             - check
 ...
