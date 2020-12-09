@@ -27,4 +27,8 @@
     - name: Include ckaserer.haproxy
       include_role:
         name: ckaserer.haproxy
+        
+    - name: Include bertvv.bind
+      include_role:
+        name: bertvv.bind
     
