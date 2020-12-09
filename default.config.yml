@@ -8,6 +8,21 @@
       option:
         - dontlog-normal
       default_backend: oc-api-backend
+    - name: oc-worker-http
+      bind:
+        - listen: ':80'
+      mode: tcp
+      option:
+        - dontlog-normal
+      default_backend: oc-worker-http-backend
+    - name: oc-worker-https
+      bind:
+        - listen: ':443'
+      mode: tcp
+      option:
+        - dontlog-normal
+      default_backend: oc-worker-https-backend
+
   haproxy_backend:
     - name: oc-api-backend
       mode: tcp
@@ -28,6 +43,108 @@
           param:
             - check
         - name: master-2
+          listen: '10.20.26.12:80'
+          param:
+            - check
+
+    - name: oc-worker-http-backend
+      mode: tcp
+      option:
+        - dontlog-normal
+      balance: source
+      server:
+        - name: worker-0
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-1
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-2
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-3
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-4
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-4
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-5
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-6
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-7
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-8
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-9
+          listen: '10.20.26.12:80'
+          param:
+            - check
+
+    - name: oc-worker-https-backend
+      mode: tcp
+      option:
+        - dontlog-normal
+      balance: source
+      server:
+        - name: worker-0
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-1
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-2
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-3
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-4
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-4
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-5
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-6
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-7
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-8
+          listen: '10.20.26.12:80'
+          param:
+            - check
+        - name: worker-9
           listen: '10.20.26.12:80'
           param:
             - check
