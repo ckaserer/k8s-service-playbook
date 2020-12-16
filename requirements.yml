@@ -2,6 +2,7 @@
 roles:
   - name: ckaserer.haproxy
   - name: bertvv.bind
+  - name: ckaserer.dhcp
 
 collections: []
 ...

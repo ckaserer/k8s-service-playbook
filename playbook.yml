@@ -31,4 +31,8 @@
     - name: Include bertvv.bind
       include_role:
         name: bertvv.bind
+
+    - name: Include ckaserer.dhcp
+      include_role:
+        name: ckaserer.dhcp
     

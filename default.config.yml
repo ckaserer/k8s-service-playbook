@@ -243,4 +243,70 @@
           ip: "10.20.24.28"
         - name: "worker9"
           ip: "10.20.24.29"
+
+# ckaserer.dhcp
+dhcp_global_authoritative: authoritative
+dhcp_global_default_lease_time: 28800   # 8hrs
+dhcp_global_max_lease_time: 43200       # 12 hrs
+dhcp_global_routers: "10.20.26.12"
+dhcp_global_domain_name: gp.local
+dhcp_global_domain_name_servers:
+  - 8.8.8.8
+  - 8.8.4.4
+dhcp_interface: eth0
+dhcp_subnets:
+  - ip: 10.20.24.0
+    netmask: 255.255.255.0
+    routers: "10.20.26.254"
+    domain_name_servers:
+      - "10.20.26.12"
+    range_begin: 10.20.24.100
+    range_end: 10.20.24.250
+dhcp_hosts:
+  - name: gp-bastion
+    mac: '00:15:5d:43:79:2f'
+    ip: "10.20.26.11"
+  - name: "bootstrap"
+    mac: '00:11:22:33:44:01'
+    ip: "10.20.24.9"
+  - name: "master0"
+    mac: '00:11:22:33:44:02'
+    ip: "10.20.24.10"
+  - name: "master1"
+    mac: '00:11:22:33:44:03'
+    ip: "10.20.24.11"
+  - name: "master2"
+    mac: '00:11:22:33:44:04'
+    ip: "10.20.24.12"
+  - name: "worker0"
+    mac: '00:11:22:33:44:05'
+    ip: "10.20.24.20"
+  - name: "worker1"
+    mac: '00:11:22:33:44:06'
+    ip: "10.20.24.21"
+  - name: "worker2"
+    mac: '00:11:22:33:44:07'
+    ip: "10.20.24.22" 
+  - name: "worker3"
+    mac: '00:11:22:33:44:08'
+    ip: "10.20.24.23"
+  - name: "worker4"
+    mac: '00:11:22:33:44:09'
+    ip: "10.20.24.24"
+  - name: "worker5"
+    mac: '00:11:22:33:44:10'
+    ip: "10.20.24.25"
+  - name: "worker6"
+    mac: '00:11:22:33:44:11'
+    ip: "10.20.24.26"
+  - name: "worker7"
+    mac: '00:11:22:33:44:12'
+    ip: "10.20.24.27"
+  - name: "worker8"
+    mac: '00:11:22:33:44:13'
+    ip: "10.20.24.28"
+  - name: "worker9"
+    mac: '00:11:22:33:44:14'
+    ip: "10.20.24.29"
+dhcp6_enable: false
 ...
