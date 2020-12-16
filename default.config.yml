@@ -245,6 +245,12 @@
           ip: "10.20.24.29"
 
 # ckaserer.dhcp
+  dhcp_global_next_server: "10.20.26.13"
+  dhcp_global_ntp_servers: 
+    - 91.206.8.36     # 0.at.pool.ntp.org
+    - 80.92.126.65    # 0.at.pool.ntp.org
+    - 194.112.182.172 # 1.at.pool.ntp.org
+    - 86.59.80.170    # 1.at.pool.ntp.org
   dhcp_global_authoritative: authoritative
   dhcp_global_default_lease_time: 28800   # 8hrs
   dhcp_global_max_lease_time: 43200       # 12 hrs
