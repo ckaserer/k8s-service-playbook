@@ -36,9 +36,20 @@
       tags:
         - bind
 
+    - name: Include bertvv.tftp
+      include_role:
+        name: bertvv.tftp
+      tags:
+        - pxe
+
+    - name: Include bertvv.pxeserver
+      include_role:
+        name: bertvv.pxeserver
+      tags:
+        - pxe
+
     - name: Include ckaserer.dhcp
       include_role:
         name: ckaserer.dhcp
       tags:
         - dhcp
-    

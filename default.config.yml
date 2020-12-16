@@ -244,6 +244,17 @@
         - name: "worker9"
           ip: "10.20.24.29"
 
+# bertvv.tftp
+
+# bertvv.pxeserver
+    pxeserver_ip: 10.20.26.12
+    pxeserver_images:
+      - name: centos7_x86_64
+        default: true
+        kernel_url: http://mirror.centos.org/centos/7/os/x86_64/images/pxeboot/vmlinuz
+        initrd_url: http://mirror.centos.org/centos/7/os/x86_64/images/pxeboot/vmlinuz
+        label: CentOS 7 x86_64
+
 # ckaserer.dhcp
   dhcp_global_next_server: "10.20.26.13"
   dhcp_global_ntp_servers: 
