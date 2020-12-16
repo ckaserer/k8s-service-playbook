@@ -256,7 +256,7 @@
   dhcp_interface: eth0
   dhcp_subnets:
     - ip: 10.20.24.0
-      netmask: 255.255.255.0
+      netmask: 255.255.252.0
       routers: "10.20.26.254"
       domain_name_servers:
         - "10.20.26.12"
