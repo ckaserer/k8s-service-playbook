@@ -36,15 +36,15 @@
       tags:
         - bind
 
-    - name: Include bertvv.tftp
+    - name: Include ckaserer.tftp
       include_role:
-        name: bertvv.tftp
+        name: ckaserer.tftp
       tags:
         - pxe
 
-    - name: Include bertvv.pxeserver
+    - name: Include ckaserer.pxeserver
       include_role:
-        name: bertvv.pxeserver
+        name: ckaserer.pxeserver
       tags:
         - pxe
 

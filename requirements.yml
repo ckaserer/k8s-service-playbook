@@ -2,8 +2,8 @@
 roles:
   - name: ckaserer.haproxy
   - name: bertvv.bind
-  - name: bertvv.tftp
-  - name: bertvv.pxeserver
+  - name: ckaserer.tftp
+  - name: ckaserer.pxeserver
   - name: ckaserer.dhcp
 
 collections: []
