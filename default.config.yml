@@ -257,6 +257,8 @@
       label: CentOS 7 x86_64
 
 # ckaserer.dhcp
+  dhcp_global_booting: "allow"
+  dhcp_global_filename: "pxelinux.0"
   dhcp_global_next_server: "10.20.26.12"
   dhcp_global_ntp_servers: 
     - 91.206.8.36     # 0.at.pool.ntp.org
