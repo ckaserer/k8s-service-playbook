@@ -30,26 +30,27 @@
       tags:
         - haproxy
         
-    - name: Include bertvv.bind
-      include_role:
-        name: bertvv.bind
-      tags:
-        - bind
+    # - name: Include bertvv.bind
+    #   include_role:
+    #     name: bertvv.bind
+    #   tags:
+    #     - bind
 
-    - name: Include ckaserer.tftp
-      include_role:
-        name: ckaserer.tftp
-      tags:
-        - pxe
+    # - name: Include ckaserer.tftp
+    #   include_role:
+    #     name: ckaserer.tftp
+    #   tags:
+    #     - pxe
 
-    - name: Include ckaserer.pxeserver
-      include_role:
-        name: ckaserer.pxeserver
-      tags:
-        - pxe
+    # - name: Include ckaserer.pxeserver
+    #   include_role:
+    #     name: ckaserer.pxeserver
+    #   tags:
+    #     - pxe
 
-    - name: Include ckaserer.dhcp
-      include_role:
-        name: ckaserer.dhcp
-      tags:
-        - dhcp
+    # - name: Include ckaserer.dhcp
+    #   include_role:
+    #     name: ckaserer.dhcp
+    #   tags:
+    #     - dhcp
+...
