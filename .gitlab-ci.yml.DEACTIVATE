@@ -1,6 +1,6 @@
 ---
 stages:
-  - deploy
+  - test
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip"
@@ -11,12 +11,12 @@ cache:
     - .pip/
     - .env/
 
-deploy:
-  stage: deploy
+test:
+  stage: test
   only:
-    - master
+    - develop
   tags:
-    - gepaplexx
+    - test
   script:
     - pip3 install virtualenv
     - python3 -m virtualenv .env
