@@ -1,4 +1,4 @@
-- hosts: gp_service
+- hosts: service
   become: true
 
   vars_files:
