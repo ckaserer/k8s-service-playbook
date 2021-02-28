@@ -1,10 +1,11 @@
 ---
 roles:
-  - name: ckaserer.haproxy
   - name: bertvv.bind
-  - name: ckaserer.tftp
-  - name: ckaserer.pxeserver
   - name: ckaserer.dhcp
+  - name: ckaserer.haproxy
+  - name: ckaserer.nginx
+  - name: ckaserer.pxeserver
+  - name: ckaserer.tftp
 
 collections: []
 ...
