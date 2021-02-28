@@ -3306,6 +3306,7 @@
           ip: "{{ network_ip }}.253"
 
 # ckaserer.nginx
+  nginx_remove_default_vhost: true
   nginx_vhosts:
     - listen: "8080 default_server"
       server_name: "pxe"
