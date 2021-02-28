@@ -60,4 +60,10 @@
         name: geerlingguy.nfs
       tags:
         - nfs
+
+    - name: Include ckaserer.nginx
+      include_role:
+        name: ckaserer.nginx
+      tags:
+        - nginx
 ...
