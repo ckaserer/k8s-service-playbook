@@ -3309,7 +3309,7 @@
           ip: "{{ network_ip }}.253"
 
 # ckaserer.nginx
-nginx_vhosts:
-  - listen: "8080 default_server"
-    root: "/var/www/pxe"
+  nginx_vhosts:
+    - listen: "8080 default_server"
+      root: "/var/www/pxe"
 ...
