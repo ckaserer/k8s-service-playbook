@@ -26,6 +26,7 @@ integration:
     - python -V
     - pip -V
     - ansible --version
+    - echo -e "[service]\nlocalhost ansible_connection=local" > hosts.ini
     - ansible-playbook playbook.yml -i hosts.ini
 
 test:
