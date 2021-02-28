@@ -3308,5 +3308,6 @@
 # ckaserer.nginx
   nginx_vhosts:
     - listen: "8080 default_server"
+      server_name: "pxe"
       root: "/var/www/pxe"
 ...
