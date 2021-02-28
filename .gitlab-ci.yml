@@ -1,5 +1,6 @@
 ---
 stages:
+  - integration
   - test
 
 variables:
@@ -10,6 +11,18 @@ cache:
     paths:
     - .pip/
     - .env/
+
+integration:
+  stage: integration
+  tags:
+    - linux
+  script:
+    - docker run -d --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v $(pwd):/mnt --name instance geerlingguy/docker-ubuntu2004-ansible:latest
+    - docker exec -it instance pip3 install virtualenv
+    - docker exec -it instance python3 -m virtualenv .env
+    - docker exec -it instance "source .env/bin/activate && pip install -r mnt/requirements.txt"
+    - docker exec -it instance "source .env/bin/activate && ansible-galaxy install -r mnt/requirements.yml"
+    - docker exec -it instance "source .env/bin/activate && ansible-playbook mnt/eplaybook.yml -i mnt/hosts.ini"
 
 test:
   stage: test
