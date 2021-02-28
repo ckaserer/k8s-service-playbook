@@ -37,11 +37,11 @@
       tags:
         - bind
 
-    # - name: Include ckaserer.tftp
-    #   include_role:
-    #     name: ckaserer.tftp
-    #   tags:
-    #     - pxe
+    - name: Include ckaserer.tftp
+      include_role:
+        name: ckaserer.tftp
+      tags:
+        - pxe
 
     # - name: Include ckaserer.pxeserver
     #   include_role:
@@ -54,4 +54,10 @@
         name: ckaserer.dhcp
       tags:
         - dhcp
+
+    - name: Include ckaserer.nginx
+      include_role:
+        name: ckaserer.nginx
+      tags:
+        - nginx
 ...

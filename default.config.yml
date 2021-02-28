@@ -2797,7 +2797,7 @@
   bind_zone_time_to_retry: "2H"
   bind_zone_time_to_expire: "2W"
   bind_zones:
-    - name: 'okd.scch.at'
+    - name: 'test.ocp.local'
       networks:
         - "{{ network_ip }}"
       primaries:
@@ -3305,4 +3305,8 @@
         - name: worker253
           ip: "{{ network_ip }}.253"
 
+# ckaserer.nginx
+nginx_vhosts:
+  - listen: "8080 default_server"
+    root: "/var/www/pxe"
 ...
