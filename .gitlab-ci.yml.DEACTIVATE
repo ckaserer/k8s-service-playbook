@@ -15,7 +15,7 @@ cache:
 integration:
   stage: integration
   tags:
-    - linux
+    - docker
   script:
     - docker run -d --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v $(pwd):/mnt --name instance geerlingguy/docker-ubuntu2004-ansible:latest
     - docker exec -it instance pip3 install virtualenv
