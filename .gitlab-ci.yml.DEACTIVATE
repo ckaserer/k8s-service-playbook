@@ -15,6 +15,9 @@ cache:
 integration:
   stage: integration
   image: geerlingguy/docker-ubuntu2004-ansible:latest
+  privileged: true
+  volumes: 
+    - /sys/fs/cgroup:/sys/fs/cgroup:ro
   tags:
     - docker
   script:
