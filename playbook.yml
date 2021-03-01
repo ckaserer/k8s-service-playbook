@@ -1,4 +1,4 @@
-- hosts: service
+- hosts: all
   become: true
 
   vars_files:
