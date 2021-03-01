@@ -44,7 +44,7 @@ jobs:
         run: ansible-galaxy install -r requirements.yml
       
       - name: Run ansible playbook
-        run: ansible-playbook --connection=local --inventory 127.0.0.1 playbook.yml
+        run: ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml
 
   # merge:
   #   name: Merge to main
