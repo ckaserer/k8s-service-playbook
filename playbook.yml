@@ -6,6 +6,10 @@
   
   pre_tasks:
   
+    - name: change hostname to service0
+      hostname:
+        name: "service0"
+
     - name: Update apt cache
       apt:
         update_cache: yes
