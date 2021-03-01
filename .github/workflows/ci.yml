@@ -45,10 +45,45 @@ jobs:
       
       - name: Run ansible playbook
         run: ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml
+  
+  merge2develop:
+    name: Merge to develop
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/feature/**'
+    needs:
+      - linter
+      - molecule
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
 
-  # merge:
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: develop
+  
+  notifyFail:
+    name: Slack Notifications \#fail
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    needs:
+      - sandbox
+      - linter
+      - merge2develop
+    steps:
+      - name: Notify Slack channel \#fail
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
+          SLACK_USERNAME: ${{ github.repository }}
+          SLACK_COLOR: '#ff0033'
+          SLACK_FOOTER: ''
+
+  # merge2main:
   #   name: Merge to main
   #   runs-on: ubuntu-latest
+  #     if: github.ref == 'refs/heads/develop'
   #   needs:
   #     - linter
   #     - molecule
@@ -60,7 +95,7 @@ jobs:
   #       uses: peter-evans/create-pull-request@v3
   #       with:
   #         branch: main
-  #       continue-on-error: true
+
 
   # notify:
   #   name: Slack Notifications
