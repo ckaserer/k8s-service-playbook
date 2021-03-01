@@ -4,7 +4,7 @@ name: Develop Branch
 'on':
   push:
     branches:
-      - 'develop'
+      - develop
     tags-ignore:
       - '**'
   schedule:
