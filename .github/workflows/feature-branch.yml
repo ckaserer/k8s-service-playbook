@@ -63,7 +63,7 @@ jobs:
           branch: develop
   
   notify:
-    name: "Notify #fail Channel"
+    name: "Notify Slack Channel #fail"
     runs-on: ubuntu-latest
     if: ${{ failure() }}
     needs:
