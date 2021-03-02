@@ -1,12 +1,14 @@
 ---
 - name: Internal Verification
   hosts: all
+  become: yes
   gather_facts: yes
   tasks:
   - name: check if dhcp is installed
-    package:
+    apt:
       name: isc-dhcp-server
       state: present
+    check_mode: yes
     register: stat_result
     failed_when: stat_result.changed
 
@@ -15,6 +17,7 @@
       name: isc-dhcp-server
       state: started
       enabled: true
+    check_mode: yes
     register: service_result
     failed_when: service_result.changed
 
@@ -29,6 +32,7 @@
 
 - name: External Verification
   hosts: all
+  become: yes
   gather_facts: no
   tasks:
     - name: Update Cache
