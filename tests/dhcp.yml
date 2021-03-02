@@ -34,7 +34,7 @@
   hosts: 127.0.0.1
   connection: local
   become: yes
-  gather_facts: yes
+  gather_facts: no
   tasks:
     - name: Update Cache
       apt:
