@@ -2,13 +2,12 @@
 name: Develop Branch
 
 'on':
-  push:
+  pull_request:
     branches:
       - develop
-    tags-ignore:
-      - '**'
-  schedule:
-    - cron: '30 8 * * 3'
+    types: [closed]
+  # schedule:
+  #   - cron: '30 8 * * 3'
 
 jobs:
 
