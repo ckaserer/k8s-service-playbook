@@ -1,6 +1,6 @@
 ---
 roles:
-  - name: bertvv.bind
+  - name: ckaserer.bind
   - name: ckaserer.dhcp
   - name: ckaserer.haproxy
   - name: ckaserer.nginx
