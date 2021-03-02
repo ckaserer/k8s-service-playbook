@@ -65,7 +65,7 @@ jobs:
     name: Deploy Test Stage
     runs-on: [self-hosted, linux, test]
     needs:
-      - merge2develop
+      - mergeDevelop
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
