@@ -330,4 +330,7 @@
       mac: '00:11:22:33:44:14'
       ip: "10.20.24.29"
   dhcp6_enable: false
+
+# geerlingguy.nfs
+  nfs_exports: [ "/data/nfs 10.20.24.1/22(rw,sync,no_subtree_check,no_root_squash)" ]
 ...
