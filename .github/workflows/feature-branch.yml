@@ -7,8 +7,6 @@ name: Feature Branch
       - 'feature/**'
     tags-ignore:
       - '**'
-  schedule:
-    - cron: '30 8 * * 3'
 
 jobs:
 
@@ -62,7 +60,7 @@ jobs:
         with:
           branch: develop
   
-  notify:
+  notifyFail:
     name: "Notify Slack Channel #fail"
     runs-on: ubuntu-latest
     if: ${{ failure() }}
@@ -74,7 +72,7 @@ jobs:
       - name: "Notify Slack channel #fail"
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_FAIL }}
           SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
           SLACK_USERNAME: ${{ github.repository }}
           SLACK_COLOR: '#ff0033'
