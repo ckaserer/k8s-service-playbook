@@ -102,7 +102,7 @@ jobs:
   notifyTest:
     name: "Notify Slack Channel #test"
     runs-on: ubuntu-latest
-    if: ${{ steps.deployTest.outcome() != "skipped"}}
+    if: steps.deployTest.outcome != 'skipped'
     needs:
       - deployTest
     steps:
@@ -175,7 +175,7 @@ jobs:
   notifyProd:
     name: "Notify Slack Channel #prod"
     runs-on: ubuntu-latest
-    if: ${{ steps.deployTest.outcome() != "skipped"}}
+    if: steps.deployProd.outcome != 'skipped'
     needs:
       - deployProd
     steps:
