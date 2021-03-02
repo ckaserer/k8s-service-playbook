@@ -45,6 +45,12 @@ jobs:
       
       - name: Run ansible playbook
         run: ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml
+        env:
+          PY_COLORS: 1
+          ANSIBLE_FORCE_COLOR: 1
+
+      - name: Run Tests
+        run: echo "TODO!!!!!!!!!!!!!"
   
   mergeDevelop:
     name: Merge to develop
@@ -83,6 +89,12 @@ jobs:
       
       - name: Run ansible playbook
         run: ansible-playbook -i hosts.ini playbook.yml
+        env:
+          PY_COLORS: 1
+          ANSIBLE_FORCE_COLOR: 1
+
+      - name: Run Tests
+        run: echo "TODO!!!!!!!!!!!!!"
 
   notifyTest:
     name: "Notify Slack Channel #test"
@@ -137,6 +149,12 @@ jobs:
       
       - name: Run ansible playbook
         run: ansible-playbook -i hosts.ini playbook.yml
+        env:
+          PY_COLORS: 1
+          ANSIBLE_FORCE_COLOR: 1
+
+      - name: Run Tests
+        run: echo "TODO!!!!!!!!!!!!!"
 
   notifyProd:
     name: "Notify Slack Channel #prod"
