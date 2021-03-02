@@ -1,5 +1,5 @@
 ---
-name: CI
+name: CI/CD
 
 'on':
   push:
@@ -81,28 +81,32 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install pip Dependencies
-        run: pip3 install -r requirements.txt
-
-      - name: Install ansible galaxy Dependencies
-        run: ansible-galaxy install -r requirements.yml
-      
-      - name: Run ansible playbook
-        run: ansible-playbook -i hosts.ini playbook.yml
+      - name: Deploy
+        run: |
+          rm -rf .env
+          pip3 install virtualenv
+          python3 -m virtualenv .env
+          source .env/bin/activate
+          pip install -r requirements.txt
+          ansible-galaxy install -r requirements.yml
+          python -V
+          pip -V
+          ansible --version
+          ansible-playbook -i hosts.ini playbook.yml
+          echo "TODO - RUN TESTS!!!!!!!!!!!!!"
         env:
           PY_COLORS: 1
           ANSIBLE_FORCE_COLOR: 1
 
-      - name: Run Tests
-        run: echo "TODO!!!!!!!!!!!!!"
-
   notifyTest:
     name: "Notify Slack Channel #test"
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs:
       - deployTest
     steps:
-      - name: "Notify Slack channel #test"
+      - name: "Notify Slack channel #test on success"
+        if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
@@ -111,7 +115,15 @@ jobs:
           SLACK_COLOR: '#28a745'
           SLACK_FOOTER: ''
 
-  # validateTestStage:
+      - name: "Notify Slack channel #test on failure"
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
+          SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
+          SLACK_USERNAME: ${{ github.repository }}
+          SLACK_COLOR: '#ff0033'
+          SLACK_FOOTER: ''
 
   mergeMain:
     name: Merge to main
@@ -141,34 +153,48 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install pip Dependencies
-        run: pip3 install -r requirements.txt
-
-      - name: Install ansible galaxy Dependencies
-        run: ansible-galaxy install -r requirements.yml
-      
-      - name: Run ansible playbook
-        run: ansible-playbook -i hosts.ini playbook.yml
+      - name: Deploy
+        run: |
+          rm -rf .env
+          pip3 install virtualenv
+          python3 -m virtualenv .env
+          source .env/bin/activate
+          pip install -r requirements.txt
+          ansible-galaxy install -r requirements.yml
+          python -V
+          pip -V
+          ansible --version
+          ansible-playbook -i hosts.ini playbook.yml
+          echo "TODO - RUN TESTS!!!!!!!!!!!!!"
         env:
           PY_COLORS: 1
           ANSIBLE_FORCE_COLOR: 1
 
-      - name: Run Tests
-        run: echo "TODO!!!!!!!!!!!!!"
-
   notifyProd:
     name: "Notify Slack Channel #prod"
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs:
       - deployProd
     steps:
-      - name: "Notify Slack channel #prod"
+      - name: "Notify Slack channel #prod on success"
+        if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_PROD }}
           SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
           SLACK_USERNAME: ${{ github.repository }}
           SLACK_COLOR: '#28a745'
+          SLACK_FOOTER: ''
+
+      - name: "Notify Slack channel #prod on failure"
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_PROD }}
+          SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
+          SLACK_USERNAME: ${{ github.repository }}
+          SLACK_COLOR: '#ff0033'
           SLACK_FOOTER: ''
 
   notifyFail:
@@ -178,13 +204,10 @@ jobs:
     needs:
       - sandbox
       - linter
-
       - mergeDevelop
-      
       - deployTest
       - notifyTest
       - mergeMain
-      
       - deployProd
       - notifyProd
     steps:
