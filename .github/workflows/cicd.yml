@@ -93,6 +93,7 @@ jobs:
           pip -V
           ansible --version
           ansible-playbook -i hosts.ini playbook.yml
+          ansible-playbook -i hosts.ini tests/dhcp.yml
           echo "TODO - RUN TESTS!!!!!!!!!!!!!"
         env:
           PY_COLORS: 1
@@ -165,6 +166,7 @@ jobs:
           pip -V
           ansible --version
           ansible-playbook -i hosts.ini playbook.yml
+          ansible-playbook -i hosts.ini tests/dhcp.yml
           echo "TODO - RUN TESTS!!!!!!!!!!!!!"
         env:
           PY_COLORS: 1
