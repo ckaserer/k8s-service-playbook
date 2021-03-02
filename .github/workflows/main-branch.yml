@@ -2,11 +2,10 @@
 name: Main Branch
 
 'on':
-  push:
+  pull_request:
     branches:
       - main
-    tags-ignore:
-      - '**'
+    types: [closed]
   schedule:
     - cron: '30 8 * * 3'
 
