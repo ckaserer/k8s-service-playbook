@@ -31,7 +31,8 @@
     failed_when: interface_result.changed
 
 - name: External Verification
-  hosts: all
+  hosts: 127.0.0.1
+  connection: local
   become: yes
   gather_facts: yes
   tasks:
@@ -39,19 +40,15 @@
       apt:
         update_cache: yes
         cache_valid_time: 3600
-      run_once: true
-      delegate_to: localhost
 
     - name: Install dhcping
       apt:
         name: 
           - dhcping
           - bootp
-      run_once: true
-      delegate_to: localhost
 
     - name: Test dhcp with dhcping
-      local_action: command dhcping -V -i -s {{ ansible_default_ipv4.address }} -h "00:11:22:33:44:09"
+      command: dhcping -V -i -s 192.168.0.3 -h "00:11:22:33:44:09"
       register: dhcping_results
 
     - name: dhcping result
