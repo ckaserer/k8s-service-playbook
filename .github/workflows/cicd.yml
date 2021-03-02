@@ -69,17 +69,17 @@ jobs:
 
   deployTest:
     name: Deploy Test Stage
-    runs-on: [self-hosted, linux, test]
+    runs-on: [self-hosted, Linux, X64, test]
     needs:
       - mergeDevelop
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+      # - name: Set up Python 3
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.x
 
       - name: Deploy
         run: |
@@ -135,17 +135,17 @@ jobs:
 
   deployProd:
     name: Deploy Production Stage
-    runs-on: [self-hosted, linux, prod]
+    runs-on: [self-hosted, Linux, X64, prod]
     needs:
       - mergeMain
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Set up Python 3
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
+      # - name: Set up Python 3
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.x
 
       - name: Deploy
         run: |
