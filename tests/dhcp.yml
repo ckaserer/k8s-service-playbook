@@ -36,23 +36,22 @@
   gather_facts: no
   tasks:
     - name: Update Cache
-      apt: 
+      local_action: 
+        module: apt
         update_cache: yes
         cache_valid_time: 3600
       run_once: true
-      delegate_to: 127.0.0.1
 
     - name: Install dhcping
-      apt:
+      local_action: 
+        module: apt
         name: 
           - dhcping
           - bootp
       run_once: true
-      delegate_to: 127.0.0.1
 
     - name: Test dhcp with dhcping
-      command: dhcping -V -i -s {{ ansible_default_ipv4.address }} -h "00:11:22:33:44:09"
-      delegate_to: 127.0.0.1
+      local_action: command dhcping -V -i -s {{ ansible_default_ipv4.address }} -h "00:11:22:33:44:09"
       register: dhcping_results
 
     - name: dhcping result
