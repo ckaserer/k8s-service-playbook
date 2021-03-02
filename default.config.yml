@@ -2025,7 +2025,7 @@
   dhcp_global_default_lease_time: 28800     # 8hrs
   dhcp_global_max_lease_time: 43200         # 12 hrs
   dhcp_global_next_server: "{{ network_ip }}.3"
-  dhcp_interface: eth0
+  dhcp_interface: eth1
   dhcp_subnets:
     - ip: "{{ network_ip }}.0"
       netmask: "{{ netmask }}"
