@@ -87,7 +87,6 @@ jobs:
   notifyTest:
     name: "Notify Slack Channel #test"
     runs-on: ubuntu-latest
-    if: ${{ failure() }}
     needs:
       - deployTest
     steps:
@@ -97,7 +96,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_TEST }}
           SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
           SLACK_USERNAME: ${{ github.repository }}
-          SLACK_COLOR: '#ff0033'
+          SLACK_COLOR: '#28a745'
           SLACK_FOOTER: ''
 
   # validateTestStage:
@@ -142,7 +141,6 @@ jobs:
   notifyProd:
     name: "Notify Slack Channel #prod"
     runs-on: ubuntu-latest
-    if: ${{ failure() }}
     needs:
       - deployProd
     steps:
@@ -152,7 +150,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_PROD }}
           SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
           SLACK_USERNAME: ${{ github.repository }}
-          SLACK_COLOR: '#ff0033'
+          SLACK_COLOR: '#28a745'
           SLACK_FOOTER: ''
 
   notifyFail:
