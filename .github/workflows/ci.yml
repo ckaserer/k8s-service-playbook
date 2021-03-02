@@ -119,6 +119,8 @@ jobs:
   deployProd:
     name: Deploy Production Stage
     runs-on: [self-hosted, linux, prod]
+    needs:
+      - mergeMain
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
