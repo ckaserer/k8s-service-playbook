@@ -99,13 +99,6 @@ jobs:
           PY_COLORS: 1
           ANSIBLE_FORCE_COLOR: 1
 
-  notifyTest:
-    name: "Notify Slack Channel #test"
-    runs-on: ubuntu-latest
-    if: steps.deployTest.outcome != 'skipped'
-    needs:
-      - deployTest
-    steps:
       - name: "Notify Slack channel #test on success"
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
@@ -172,13 +165,6 @@ jobs:
           PY_COLORS: 1
           ANSIBLE_FORCE_COLOR: 1
 
-  notifyProd:
-    name: "Notify Slack Channel #prod"
-    runs-on: ubuntu-latest
-    if: steps.deployProd.outcome != 'skipped'
-    needs:
-      - deployProd
-    steps:
       - name: "Notify Slack channel #prod on success"
         if: ${{ success() }}
         uses: rtCamp/action-slack-notify@v2
@@ -208,10 +194,8 @@ jobs:
       - linter
       - mergeDevelop
       - deployTest
-      - notifyTest
       - mergeMain
       - deployProd
-      - notifyProd
     steps:
       - name: "Notify Slack channel #fail"
         uses: rtCamp/action-slack-notify@v2
