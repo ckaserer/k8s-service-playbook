@@ -5,6 +5,7 @@ roles:
   - name: ckaserer.tftp
   - name: ckaserer.pxeserver
   - name: ckaserer.dhcp
+  - name: geerlingguy.nfs
 
 collections: []
 ...

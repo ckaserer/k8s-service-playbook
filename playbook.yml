@@ -53,3 +53,9 @@
         name: ckaserer.dhcp
       tags:
         - dhcp
+    
+    - name: Include geerlingguy.nfs
+      include_role:
+        name: geerlingguy.nfs
+      tags:
+        - nfs
