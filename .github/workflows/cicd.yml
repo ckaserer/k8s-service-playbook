@@ -154,8 +154,5 @@ jobs:
           SLACK_USERNAME: ${{ github.repository }}
           SLACK_COLOR: '#ff0033'
           SLACK_FOOTER: ''
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b444c9c08e5ac36b0d80c340b33aa708d8794b3
 ...
