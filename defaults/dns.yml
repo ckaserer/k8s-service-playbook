@@ -1,0 +1,528 @@
+---
+bind_allow_query:
+  - any
+bind_listen_ipv4:
+  - "{{ network_ip }}.3"
+bind_listen_ipv6:
+  - "{{ network_ip }}.3"
+bind_forwarders:
+  - '8.8.8.8'
+  - '8.8.4.4'
+bind_recursion: true
+bind_query_log: 'data/query.log'
+bind_check_names: 'master ignore'
+bind_zone_master_server_ip: "{{ network_ip }}.3"
+bind_zone_minimum_ttl: "2D"
+bind_zone_ttl: "2W"
+bind_zone_time_to_refresh: "2D"
+bind_zone_time_to_retry: "2H"
+bind_zone_time_to_expire: "2W"
+bind_zones:
+  - name: 'test.ocp.local'
+    networks:
+      - "{{ network_ip }}"
+    primaries:
+      - "{{ network_ip }}.3"
+    hostmaster_email: "noreply@no.reply"
+    hosts:
+      - name: "bastion"
+        ip: "{{ network_ip }}.2"
+      - name: "service0"
+        ip: "{{ network_ip }}.3"
+        aliases:
+          - "*.apps"
+          - api
+          - api-int
+      # - name: "service1"
+      #   ip: "{{ network_ip }}.2"
+      #   aliases:
+      #     - "*.apps"
+      #     - api
+      #     - api-int
+      - name: "bootstrap"
+        ip: "{{ network_ip }}.9"
+
+      - name: "master0"
+        ip: "{{ network_ip }}.10"
+      - name: "master1"
+        ip: "{{ network_ip }}.11"
+      - name: "master2"
+        ip: "{{ network_ip }}.12"
+      - name: "master3"
+        ip: "{{ network_ip }}.13"
+      - name: "master4"
+        ip: "{{ network_ip }}.14"
+      - name: "master5"
+        ip: "{{ network_ip }}.15"
+      - name: "master6"
+        ip: "{{ network_ip }}.16"
+
+      - name: worker20
+        ip: "{{ network_ip }}.20"
+      - name: worker21
+        ip: "{{ network_ip }}.21"
+      - name: worker22
+        ip: "{{ network_ip }}.22"
+      - name: worker23
+        ip: "{{ network_ip }}.23"
+      - name: worker24
+        ip: "{{ network_ip }}.24"
+      - name: worker25
+        ip: "{{ network_ip }}.25"
+      - name: worker26
+        ip: "{{ network_ip }}.26"
+      - name: worker27
+        ip: "{{ network_ip }}.27"
+      - name: worker28
+        ip: "{{ network_ip }}.28"
+      - name: worker29
+        ip: "{{ network_ip }}.29"
+      - name: worker30
+        ip: "{{ network_ip }}.30"
+      - name: worker31
+        ip: "{{ network_ip }}.31"
+      - name: worker32
+        ip: "{{ network_ip }}.32"
+      - name: worker33
+        ip: "{{ network_ip }}.33"
+      - name: worker34
+        ip: "{{ network_ip }}.34"
+      - name: worker35
+        ip: "{{ network_ip }}.35"
+      - name: worker36
+        ip: "{{ network_ip }}.36"
+      - name: worker37
+        ip: "{{ network_ip }}.37"
+      - name: worker38
+        ip: "{{ network_ip }}.38"
+      - name: worker39
+        ip: "{{ network_ip }}.39"
+      - name: worker40
+        ip: "{{ network_ip }}.40"
+      - name: worker41
+        ip: "{{ network_ip }}.41"
+      - name: worker42
+        ip: "{{ network_ip }}.42"
+      - name: worker43
+        ip: "{{ network_ip }}.43"
+      - name: worker44
+        ip: "{{ network_ip }}.44"
+      - name: worker45
+        ip: "{{ network_ip }}.45"
+      - name: worker46
+        ip: "{{ network_ip }}.46"
+      - name: worker47
+        ip: "{{ network_ip }}.47"
+      - name: worker48
+        ip: "{{ network_ip }}.48"
+      - name: worker49
+        ip: "{{ network_ip }}.49"
+      - name: worker50
+        ip: "{{ network_ip }}.50"
+      - name: worker51
+        ip: "{{ network_ip }}.51"
+      - name: worker52
+        ip: "{{ network_ip }}.52"
+      - name: worker53
+        ip: "{{ network_ip }}.53"
+      - name: worker54
+        ip: "{{ network_ip }}.54"
+      - name: worker55
+        ip: "{{ network_ip }}.55"
+      - name: worker56
+        ip: "{{ network_ip }}.56"
+      - name: worker57
+        ip: "{{ network_ip }}.57"
+      - name: worker58
+        ip: "{{ network_ip }}.58"
+      - name: worker59
+        ip: "{{ network_ip }}.59"
+      - name: worker60
+        ip: "{{ network_ip }}.60"
+      - name: worker61
+        ip: "{{ network_ip }}.61"
+      - name: worker62
+        ip: "{{ network_ip }}.62"
+      - name: worker63
+        ip: "{{ network_ip }}.63"
+      - name: worker64
+        ip: "{{ network_ip }}.64"
+      - name: worker65
+        ip: "{{ network_ip }}.65"
+      - name: worker66
+        ip: "{{ network_ip }}.66"
+      - name: worker67
+        ip: "{{ network_ip }}.67"
+      - name: worker68
+        ip: "{{ network_ip }}.68"
+      - name: worker69
+        ip: "{{ network_ip }}.69"
+      - name: worker70
+        ip: "{{ network_ip }}.70"
+      - name: worker71
+        ip: "{{ network_ip }}.71"
+      - name: worker72
+        ip: "{{ network_ip }}.72"
+      - name: worker73
+        ip: "{{ network_ip }}.73"
+      - name: worker74
+        ip: "{{ network_ip }}.74"
+      - name: worker75
+        ip: "{{ network_ip }}.75"
+      - name: worker76
+        ip: "{{ network_ip }}.76"
+      - name: worker77
+        ip: "{{ network_ip }}.77"
+      - name: worker78
+        ip: "{{ network_ip }}.78"
+      - name: worker79
+        ip: "{{ network_ip }}.79"
+      - name: worker80
+        ip: "{{ network_ip }}.80"
+      - name: worker81
+        ip: "{{ network_ip }}.81"
+      - name: worker82
+        ip: "{{ network_ip }}.82"
+      - name: worker83
+        ip: "{{ network_ip }}.83"
+      - name: worker84
+        ip: "{{ network_ip }}.84"
+      - name: worker85
+        ip: "{{ network_ip }}.85"
+      - name: worker86
+        ip: "{{ network_ip }}.86"
+      - name: worker87
+        ip: "{{ network_ip }}.87"
+      - name: worker88
+        ip: "{{ network_ip }}.88"
+      - name: worker89
+        ip: "{{ network_ip }}.89"
+      - name: worker90
+        ip: "{{ network_ip }}.90"
+      - name: worker91
+        ip: "{{ network_ip }}.91"
+      - name: worker92
+        ip: "{{ network_ip }}.92"
+      - name: worker93
+        ip: "{{ network_ip }}.93"
+      - name: worker94
+        ip: "{{ network_ip }}.94"
+      - name: worker95
+        ip: "{{ network_ip }}.95"
+      - name: worker96
+        ip: "{{ network_ip }}.96"
+      - name: worker97
+        ip: "{{ network_ip }}.97"
+      - name: worker98
+        ip: "{{ network_ip }}.98"
+      - name: worker99
+        ip: "{{ network_ip }}.99"
+      - name: worker100
+        ip: "{{ network_ip }}.100"
+      - name: worker101
+        ip: "{{ network_ip }}.101"
+      - name: worker102
+        ip: "{{ network_ip }}.102"
+      - name: worker103
+        ip: "{{ network_ip }}.103"
+      - name: worker104
+        ip: "{{ network_ip }}.104"
+      - name: worker105
+        ip: "{{ network_ip }}.105"
+      - name: worker106
+        ip: "{{ network_ip }}.106"
+      - name: worker107
+        ip: "{{ network_ip }}.107"
+      - name: worker108
+        ip: "{{ network_ip }}.108"
+      - name: worker109
+        ip: "{{ network_ip }}.109"
+      - name: worker110
+        ip: "{{ network_ip }}.110"
+      - name: worker111
+        ip: "{{ network_ip }}.111"
+      - name: worker112
+        ip: "{{ network_ip }}.112"
+      - name: worker113
+        ip: "{{ network_ip }}.113"
+      - name: worker114
+        ip: "{{ network_ip }}.114"
+      - name: worker115
+        ip: "{{ network_ip }}.115"
+      - name: worker116
+        ip: "{{ network_ip }}.116"
+      - name: worker117
+        ip: "{{ network_ip }}.117"
+      - name: worker118
+        ip: "{{ network_ip }}.118"
+      - name: worker119
+        ip: "{{ network_ip }}.119"
+      - name: worker120
+        ip: "{{ network_ip }}.120"
+      - name: worker121
+        ip: "{{ network_ip }}.121"
+      - name: worker122
+        ip: "{{ network_ip }}.122"
+      - name: worker123
+        ip: "{{ network_ip }}.123"
+      - name: worker124
+        ip: "{{ network_ip }}.124"
+      - name: worker125
+        ip: "{{ network_ip }}.125"
+      - name: worker126
+        ip: "{{ network_ip }}.126"
+      - name: worker127
+        ip: "{{ network_ip }}.127"
+      - name: worker128
+        ip: "{{ network_ip }}.128"
+      - name: worker129
+        ip: "{{ network_ip }}.129"
+      - name: worker130
+        ip: "{{ network_ip }}.130"
+      - name: worker131
+        ip: "{{ network_ip }}.131"
+      - name: worker132
+        ip: "{{ network_ip }}.132"
+      - name: worker133
+        ip: "{{ network_ip }}.133"
+      - name: worker134
+        ip: "{{ network_ip }}.134"
+      - name: worker135
+        ip: "{{ network_ip }}.135"
+      - name: worker136
+        ip: "{{ network_ip }}.136"
+      - name: worker137
+        ip: "{{ network_ip }}.137"
+      - name: worker138
+        ip: "{{ network_ip }}.138"
+      - name: worker139
+        ip: "{{ network_ip }}.139"
+      - name: worker140
+        ip: "{{ network_ip }}.140"
+      - name: worker141
+        ip: "{{ network_ip }}.141"
+      - name: worker142
+        ip: "{{ network_ip }}.142"
+      - name: worker143
+        ip: "{{ network_ip }}.143"
+      - name: worker144
+        ip: "{{ network_ip }}.144"
+      - name: worker145
+        ip: "{{ network_ip }}.145"
+      - name: worker146
+        ip: "{{ network_ip }}.146"
+      - name: worker147
+        ip: "{{ network_ip }}.147"
+      - name: worker148
+        ip: "{{ network_ip }}.148"
+      - name: worker149
+        ip: "{{ network_ip }}.149"
+      - name: worker150
+        ip: "{{ network_ip }}.150"
+      - name: worker151
+        ip: "{{ network_ip }}.151"
+      - name: worker152
+        ip: "{{ network_ip }}.152"
+      - name: worker153
+        ip: "{{ network_ip }}.153"
+      - name: worker154
+        ip: "{{ network_ip }}.154"
+      - name: worker155
+        ip: "{{ network_ip }}.155"
+      - name: worker156
+        ip: "{{ network_ip }}.156"
+      - name: worker157
+        ip: "{{ network_ip }}.157"
+      - name: worker158
+        ip: "{{ network_ip }}.158"
+      - name: worker159
+        ip: "{{ network_ip }}.159"
+      - name: worker160
+        ip: "{{ network_ip }}.160"
+      - name: worker161
+        ip: "{{ network_ip }}.161"
+      - name: worker162
+        ip: "{{ network_ip }}.162"
+      - name: worker163
+        ip: "{{ network_ip }}.163"
+      - name: worker164
+        ip: "{{ network_ip }}.164"
+      - name: worker165
+        ip: "{{ network_ip }}.165"
+      - name: worker166
+        ip: "{{ network_ip }}.166"
+      - name: worker167
+        ip: "{{ network_ip }}.167"
+      - name: worker168
+        ip: "{{ network_ip }}.168"
+      - name: worker169
+        ip: "{{ network_ip }}.169"
+      - name: worker170
+        ip: "{{ network_ip }}.170"
+      - name: worker171
+        ip: "{{ network_ip }}.171"
+      - name: worker172
+        ip: "{{ network_ip }}.172"
+      - name: worker173
+        ip: "{{ network_ip }}.173"
+      - name: worker174
+        ip: "{{ network_ip }}.174"
+      - name: worker175
+        ip: "{{ network_ip }}.175"
+      - name: worker176
+        ip: "{{ network_ip }}.176"
+      - name: worker177
+        ip: "{{ network_ip }}.177"
+      - name: worker178
+        ip: "{{ network_ip }}.178"
+      - name: worker179
+        ip: "{{ network_ip }}.179"
+      - name: worker180
+        ip: "{{ network_ip }}.180"
+      - name: worker181
+        ip: "{{ network_ip }}.181"
+      - name: worker182
+        ip: "{{ network_ip }}.182"
+      - name: worker183
+        ip: "{{ network_ip }}.183"
+      - name: worker184
+        ip: "{{ network_ip }}.184"
+      - name: worker185
+        ip: "{{ network_ip }}.185"
+      - name: worker186
+        ip: "{{ network_ip }}.186"
+      - name: worker187
+        ip: "{{ network_ip }}.187"
+      - name: worker188
+        ip: "{{ network_ip }}.188"
+      - name: worker189
+        ip: "{{ network_ip }}.189"
+      - name: worker190
+        ip: "{{ network_ip }}.190"
+      - name: worker191
+        ip: "{{ network_ip }}.191"
+      - name: worker192
+        ip: "{{ network_ip }}.192"
+      - name: worker193
+        ip: "{{ network_ip }}.193"
+      - name: worker194
+        ip: "{{ network_ip }}.194"
+      - name: worker195
+        ip: "{{ network_ip }}.195"
+      - name: worker196
+        ip: "{{ network_ip }}.196"
+      - name: worker197
+        ip: "{{ network_ip }}.197"
+      - name: worker198
+        ip: "{{ network_ip }}.198"
+      - name: worker199
+        ip: "{{ network_ip }}.199"
+      - name: worker200
+        ip: "{{ network_ip }}.200"
+      - name: worker201
+        ip: "{{ network_ip }}.201"
+      - name: worker202
+        ip: "{{ network_ip }}.202"
+      - name: worker203
+        ip: "{{ network_ip }}.203"
+      - name: worker204
+        ip: "{{ network_ip }}.204"
+      - name: worker205
+        ip: "{{ network_ip }}.205"
+      - name: worker206
+        ip: "{{ network_ip }}.206"
+      - name: worker207
+        ip: "{{ network_ip }}.207"
+      - name: worker208
+        ip: "{{ network_ip }}.208"
+      - name: worker209
+        ip: "{{ network_ip }}.209"
+      - name: worker210
+        ip: "{{ network_ip }}.210"
+      - name: worker211
+        ip: "{{ network_ip }}.211"
+      - name: worker212
+        ip: "{{ network_ip }}.212"
+      - name: worker213
+        ip: "{{ network_ip }}.213"
+      - name: worker214
+        ip: "{{ network_ip }}.214"
+      - name: worker215
+        ip: "{{ network_ip }}.215"
+      - name: worker216
+        ip: "{{ network_ip }}.216"
+      - name: worker217
+        ip: "{{ network_ip }}.217"
+      - name: worker218
+        ip: "{{ network_ip }}.218"
+      - name: worker219
+        ip: "{{ network_ip }}.219"
+      - name: worker220
+        ip: "{{ network_ip }}.220"
+      - name: worker221
+        ip: "{{ network_ip }}.221"
+      - name: worker222
+        ip: "{{ network_ip }}.222"
+      - name: worker223
+        ip: "{{ network_ip }}.223"
+      - name: worker224
+        ip: "{{ network_ip }}.224"
+      - name: worker225
+        ip: "{{ network_ip }}.225"
+      - name: worker226
+        ip: "{{ network_ip }}.226"
+      - name: worker227
+        ip: "{{ network_ip }}.227"
+      - name: worker228
+        ip: "{{ network_ip }}.228"
+      - name: worker229
+        ip: "{{ network_ip }}.229"
+      - name: worker230
+        ip: "{{ network_ip }}.230"
+      - name: worker231
+        ip: "{{ network_ip }}.231"
+      - name: worker232
+        ip: "{{ network_ip }}.232"
+      - name: worker233
+        ip: "{{ network_ip }}.233"
+      - name: worker234
+        ip: "{{ network_ip }}.234"
+      - name: worker235
+        ip: "{{ network_ip }}.235"
+      - name: worker236
+        ip: "{{ network_ip }}.236"
+      - name: worker237
+        ip: "{{ network_ip }}.237"
+      - name: worker238
+        ip: "{{ network_ip }}.238"
+      - name: worker239
+        ip: "{{ network_ip }}.239"
+      - name: worker240
+        ip: "{{ network_ip }}.240"
+      - name: worker241
+        ip: "{{ network_ip }}.241"
+      - name: worker242
+        ip: "{{ network_ip }}.242"
+      - name: worker243
+        ip: "{{ network_ip }}.243"
+      - name: worker244
+        ip: "{{ network_ip }}.244"
+      - name: worker245
+        ip: "{{ network_ip }}.245"
+      - name: worker246
+        ip: "{{ network_ip }}.246"
+      - name: worker247
+        ip: "{{ network_ip }}.247"
+      - name: worker248
+        ip: "{{ network_ip }}.248"
+      - name: worker249
+        ip: "{{ network_ip }}.249"
+      - name: worker250
+        ip: "{{ network_ip }}.250"
+      - name: worker251
+        ip: "{{ network_ip }}.251"
+      - name: worker252
+        ip: "{{ network_ip }}.252"
+      - name: worker253
+        ip: "{{ network_ip }}.253"
+...
