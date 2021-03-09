@@ -128,53 +128,6 @@ jobs:
         with:
           branch: main
 
-  deployProd:
-    name: Deploy Production Stage
-    runs-on: [self-hosted, Linux, X64, prod]
-    needs:
-      - mergeMain
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Deploy
-        run: |
-          rm -rf .env
-          pip3 install virtualenv 
-          python3 -m virtualenv .env --system-site-packages
-          source .env/bin/activate
-          pip install -r requirements.txt
-          ansible-galaxy install -r requirements.yml
-          python -V
-          pip -V
-          ansible --version
-          ansible-playbook -i hosts.ini playbook.yml
-          ansible-playbook -i hosts.ini tests/dhcp.yml
-          echo "TODO - RUN TESTS!!!!!!!!!!!!!"
-        env:
-          PY_COLORS: 1
-          ANSIBLE_FORCE_COLOR: 1
-
-      - name: "Notify Slack channel #prod on success"
-        if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_PROD }}
-          SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
-          SLACK_USERNAME: ${{ github.repository }}
-          SLACK_COLOR: '#28a745'
-          SLACK_FOOTER: ''
-
-      - name: "Notify Slack channel #prod on failure"
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_PROD }}
-          SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
-          SLACK_USERNAME: ${{ github.repository }}
-          SLACK_COLOR: '#ff0033'
-          SLACK_FOOTER: ''
-
   notifyFail:
     name: "Notify Slack Channel #fail"
     runs-on: ubuntu-latest
