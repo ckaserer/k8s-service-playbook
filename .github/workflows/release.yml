@@ -4,7 +4,7 @@ name: Release
 'on':
   push:
     tags:
-      - '*'
+      - '**'
 
 jobs:
 
@@ -49,13 +49,34 @@ jobs:
 
       - name: Run Tests
         run: echo "TODO!!!!!!!!!!!!!"
-  
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          path: ckaserer.bind
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          body: ''
+          draft: false
+          prerelease: false
+
   deployProd:
     name: Deploy Production Stage
     runs-on: [self-hosted, Linux, X64, prod]
     needs:
       - linter
       - sandbox
+      - release
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
