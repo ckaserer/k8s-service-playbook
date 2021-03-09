@@ -16,7 +16,7 @@
 
     - include_vars: "{{ item }}"
       with_fileglob:
-        - "{{ playbook_dir }}/config.yml"
+        - "{{ playbook_dir }}/defaults/*.yml"
       tags: ['always']
 
   tasks:
