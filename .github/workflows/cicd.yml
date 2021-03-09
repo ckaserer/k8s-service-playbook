@@ -138,7 +138,6 @@ jobs:
       - mergeDevelop
       - deployTest
       - mergeMain
-      - deployProd
     steps:
       - name: "Notify Slack channel #fail"
         uses: rtCamp/action-slack-notify@v2
