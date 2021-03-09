@@ -88,6 +88,13 @@ jobs:
           pip -V
           ansible --version
           ansible-playbook -i hosts.ini playbook.yml
+        env:
+          PY_COLORS: 1
+          ANSIBLE_FORCE_COLOR: 1
+
+      - name: Validate
+        run: |
+          source .env/bin/activate
           ansible-playbook -i hosts.ini tests/dhcp.yml
           echo "TODO - RUN TESTS!!!!!!!!!!!!!"
         env:
@@ -147,5 +154,8 @@ jobs:
           SLACK_USERNAME: ${{ github.repository }}
           SLACK_COLOR: '#ff0033'
           SLACK_FOOTER: ''
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1b444c9c08e5ac36b0d80c340b33aa708d8794b3
 ...

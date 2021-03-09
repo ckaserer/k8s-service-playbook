@@ -3,8 +3,6 @@ name: Release
 
 'on':
   push:
-    branches:
-      - 'main'
     tags:
       - '*'
 
@@ -56,7 +54,8 @@ jobs:
     name: Deploy Production Stage
     runs-on: [self-hosted, Linux, X64, prod]
     needs:
-      - mergeMain
+      - linter
+      - sandbox
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -73,6 +72,13 @@ jobs:
           pip -V
           ansible --version
           ansible-playbook -i hosts.ini playbook.yml
+        env:
+          PY_COLORS: 1
+          ANSIBLE_FORCE_COLOR: 1
+
+      - name: Validate
+        run: |
+          source .env/bin/activate
           ansible-playbook -i hosts.ini tests/dhcp.yml
           echo "TODO - RUN TESTS!!!!!!!!!!!!!"
         env:
