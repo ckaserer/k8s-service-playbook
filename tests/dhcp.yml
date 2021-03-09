@@ -1,14 +1,15 @@
 ---
 - name: Internal Verification
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
   tasks:
+  
   - name: check if dhcp is installed
     apt:
       name: isc-dhcp-server
       state: present
-    check_mode: yes
+    check_mode: true
     register: stat_result
     failed_when: stat_result.changed
 
@@ -17,7 +18,7 @@
       name: isc-dhcp-server
       state: started
       enabled: true
-    check_mode: yes
+    check_mode: true
     register: service_result
     failed_when: service_result.changed
 
@@ -26,19 +27,19 @@
       dest: /etc/default/isc-dhcp-server
       line: 'INTERFACESv4="eth1"'
       regexp: '^INTERFACESv4='
-    check_mode: yes
+    check_mode: true
     register: interface_result
     failed_when: interface_result.changed
 
 - name: External Verification
   hosts: 127.0.0.1
   connection: local
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
   tasks:
     - name: Update Cache
       apt:
-        update_cache: yes
+        update_cache: true
         cache_valid_time: 3600
 
     - name: Install dhcping
