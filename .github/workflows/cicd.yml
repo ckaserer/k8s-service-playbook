@@ -66,6 +66,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: develop
+          delete-branch: true
 
   deployTest:
     name: Deploy Test Stage
