@@ -32,17 +32,29 @@
           - python3-apt
           - net-tools
 
-    - name: Include ckaserer.haproxy
-      include_role:
-        name: ckaserer.haproxy
-      tags:
-        - haproxy
-        
     - name: Include ckaserer.bind
       include_role:
         name: ckaserer.bind
       tags:
         - bind
+
+    - name: Include ckaserer.dhcp
+      include_role:
+        name: ckaserer.dhcp
+      tags:
+        - dhcp
+
+    - name: Include ckaserer.haproxy
+      include_role:
+        name: ckaserer.haproxy
+      tags:
+        - haproxy
+
+    - name: Include ckaserer.nginx
+      include_role:
+        name: ckaserer.nginx
+      tags:
+        - nginx
 
     - name: Include ckaserer.tftp
       include_role:
@@ -56,15 +68,5 @@
     #   tags:
     #     - pxe
 
-    - name: Include ckaserer.dhcp
-      include_role:
-        name: ckaserer.dhcp
-      tags:
-        - dhcp
 
-    - name: Include ckaserer.nginx
-      include_role:
-        name: ckaserer.nginx
-      tags:
-        - nginx
 ...
